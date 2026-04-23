@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef ,useCallback} from "react";
 import { io } from "socket.io-client";
 const BASE_URL = "https://connect-prxn.onrender.com";
 const socket = io(BASE_URL);
@@ -112,17 +112,15 @@ export default function Home({ number, setLogin }) {
         }
     }
 
-    const getUsersList = async () => {
-        try {
-            const response = await fetch(`${BASE_URL}/users/${number}`);
-            const final_data = await response.json();
-            console.log(final_data);
-            setUsers(final_data);
-        }
-        catch (error) {
-            console.log(error);
-        }
-    };
+    const getUsersList = useCallback(async () => {
+    try {
+        const response = await fetch(`${BASE_URL}/users/${number}`);
+        const final_data = await response.json();
+        setUsers(final_data);
+    } catch (error) {
+        console.log(error);
+    }
+}, [number]); 
     useEffect(() => {
         getUsersList();
     }, [getUsersList])
@@ -220,18 +218,15 @@ export default function Home({ number, setLogin }) {
         }
     };
 
-    const getProfile = async () => {
-        try {
-            const res = await fetch(`${BASE_URL}/profilepic/${number}`);
-            const data = await res.json();
-
-            setShowProfile(data);
-
-
-        } catch (err) {
-            console.log(err);
-        }
-    };
+   const getProfile = useCallback(async () => {
+    try {
+        const res = await fetch(`${BASE_URL}/profilepic/${number}`);
+        const data = await res.json();
+        setShowProfile(data);
+    } catch (err) {
+        console.log(err);
+    }
+}, [number]); 
 
     useEffect(() => {
         getProfile();
