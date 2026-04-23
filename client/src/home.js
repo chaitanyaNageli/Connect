@@ -125,7 +125,7 @@ export default function Home({ number, setLogin }) {
     };
     useEffect(() => {
         getUsersList();
-    }, [])
+    }, [getUsersList])
 
 
 
@@ -235,7 +235,7 @@ export default function Home({ number, setLogin }) {
 
     useEffect(() => {
         getProfile();
-    }, []);
+    }, [getProfile]);
     return (
         <div className="cantainer">
 
