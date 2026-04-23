@@ -9,8 +9,8 @@ export default function App()
   const [number,setNumber]=useState("");
   return(
     <div>
-     {/* {login?<Home number={"9392961889"} setLogin={setLogin} />:<Login setLogin={setLogin} setMyNumber={setNumber}/>} */}
-    <Home number={"9392961889"} setLogin={setLogin} />
+      {login?<Home number={"9392961889"} setLogin={setLogin} />:<Login setLogin={setLogin} setMyNumber={setNumber}/>}
+
 
     </div>
   );
