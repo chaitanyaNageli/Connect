@@ -9,7 +9,7 @@ export default function App()
   const [number,setNumber]=useState("");
   return(
     <div>
-      {login?<Home number={"9392961889"} setLogin={setLogin} />:<Login setLogin={setLogin} setMyNumber={setNumber}/>}
+      {login?<Home number={number} setLogin={setLogin} />:<Login setLogin={setLogin} setMyNumber={setNumber}/>}
 
 
     </div>
